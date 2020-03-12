@@ -1,0 +1,8 @@
+{
+  "name": "wasm-c-jest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kobakazu0429/wasm-c-jest.git",
+  "author": "kobakakzu0429 <kobakazu10@gmail.com>",
+  "license": "MIT"
+}
