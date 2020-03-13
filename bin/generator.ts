@@ -20,6 +20,7 @@ const insertToTopContents = `#include <sys/uio.h>
 
 `;
 
+// ref: http://man7.org/linux/man-pages/man2/writev.2.html
 const insertToBottomContents = `
 extern void putc_js(char ch);
 
