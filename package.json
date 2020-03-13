@@ -5,7 +5,14 @@
   "repository": "git@github.com:kobakazu0429/wasm-c-jest.git",
   "author": "kobakakzu0429 <kobakazu10@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "generate": "ts-node bin/generator.ts",
+    "compile": "ts-node bin/compile.ts",
+    "start": "ts-node bin/start.ts",
+    "lint": "tslint --fix -c ./tslint.json '{src,bin}/**/*{.ts,.tsx}'"
+  },
   "dependencies": {
+    "@wasm/studio-utils": "^0.0.3",
     "magic-string": "^0.25.7",
     "ts-node": "^8.6.2",
     "ts-node-dev": "^1.0.0-pre.44",
