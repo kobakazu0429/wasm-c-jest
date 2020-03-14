@@ -49,9 +49,10 @@ size_t readv_c(int fd, const struct iovec *iov, int iovcnt)
   {
     for (int j = 0; j < iov[i].iov_len; j++)
     {
-      ((char *)iov[i].iov_base)[j] = getc_js(j);
+      char s = getc_js(j);
+      ((char *)iov[i].iov_base)[j] = s;
+      if (s != 0) cnt++;
     }
-    cnt += iov[i].iov_len;
   }
   return cnt;
 }

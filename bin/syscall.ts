@@ -1,3 +1,5 @@
+import { stdin } from "./Stdin";
+
 export interface ImportObject extends WebAssembly.Imports {
   env: {
     __syscall0: Syscall0;
@@ -27,6 +29,7 @@ let memoryStates = new WeakMap();
 // * https://syscalls.kernelgrok.com/
 // * https://www.informatik.htw-dresden.de/~beck/ASM/syscall_list.html
 export function syscall(instance: Instance, n: number, args: number[]): any {
+  // console.log("Syscall " + n + " NYI, args: " + args + "\n");
   switch (n) {
     default:
       // console.log("Syscall " + n + " NYI.");
@@ -35,6 +38,7 @@ export function syscall(instance: Instance, n: number, args: number[]): any {
       return 0;
     case /* readv */ 145:
       // console.log("called 145");
+      stdin.scan();
       return instance.exports.readv_c(args[0], args[1], args[2]);
     case /* writev */ 146:
       // console.log("called 146");

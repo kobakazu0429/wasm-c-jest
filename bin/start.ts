@@ -1,9 +1,9 @@
 import * as fs from "fs";
 import * as path from "path";
 import { syscall as call, Instance, ImportObject } from "./syscall";
+import { stdin } from "./Stdin";
 
 let instance: Instance;
-let str = "52\n25\n";
 
 const importObject: ImportObject = {
   env: {
@@ -17,15 +17,18 @@ const importObject: ImportObject = {
     putc_js: c => {
       const s = String.fromCharCode(c);
       if (s === "\n") {
-        console.log(str);
-        str = "";
+        console.log(stdin.str);
+        stdin.clear();
       } else {
-        str += s;
+        stdin.add(s);
       }
     },
     getc_js: i => {
-      if (str.length > i) {
-        return str.charCodeAt(i);
+      if (stdin.str.length > i) {
+        return stdin.str.charCodeAt(i);
+      } else if (stdin.str.length === i) {
+        stdin.clear();
+        return "\n".charCodeAt(0);
       }
       return 0;
     }
