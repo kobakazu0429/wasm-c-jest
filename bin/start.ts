@@ -40,7 +40,7 @@ const wasmPath = path.relative(
   path.join(__dirname, ".tmp/generated.wasm")
 );
 
-const main = async () => {
+export const main = async () => {
   try {
     const bytes = fs.readFileSync(wasmPath);
     const results = await WebAssembly.instantiate(bytes, importObject);

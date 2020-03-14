@@ -1,3 +1,4 @@
+import { prompt } from "readline-sync";
 import { stdin } from "./Stdin";
 
 export interface ImportObject extends WebAssembly.Imports {
@@ -38,7 +39,7 @@ export function syscall(instance: Instance, n: number, args: number[]): any {
       return 0;
     case /* readv */ 145:
       // console.log("called 145");
-      stdin.scan();
+      stdin.add(prompt({ prompt: "" }));
       return instance.exports.readv_c(args[0], args[1], args[2]);
     case /* writev */ 146:
       // console.log("called 146");
