@@ -1,15 +1,22 @@
 import { main } from "../bin/start";
 
 const spyLog = jest.spyOn(console, "log");
-spyLog.mockImplementation(x => x);
+spyLog.mockImplementation(_x => undefined);
 
 describe("hello_world", () => {
-  test("should say 'Hello, World'.", () => {
-    main().then(() => {
+  afterEach(() => {
+    spyLog.mockClear();
+  });
+  afterAll(() => {
+    spyLog.mockReset();
+    spyLog.mockRestore();
+  });
+
+  test("should say 'Hello, World!'.", async done => {
+    return main().then(() => {
       expect(spyLog.mock.calls[0][0]).toBe("Hello, World!");
       expect(console.log).toBeCalled();
-      spyLog.mockReset();
-      spyLog.mockRestore();
+      done();
     });
   });
 });
