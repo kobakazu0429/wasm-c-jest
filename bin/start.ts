@@ -8,12 +8,12 @@ let instance: Instance;
 const importObject: ImportObject = {
   env: {
     __syscall0: n => call(instance, n, []),
-    __syscall1: (n, a) => call(instance, n, [a]),
-    __syscall2: (n, a, b) => call(instance, n, [a, b]),
-    __syscall3: (n, a, b, c) => call(instance, n, [a, b, c]),
-    __syscall4: (n, a, b, c, d) => call(instance, n, [a, b, c, d]),
-    __syscall5: (n, a, b, c, d, e) => call(instance, n, [a, b, c, d, e]),
-    __syscall6: (n, a, b, c, d, e, f) => call(instance, n, [a, b, c, d, e, f]),
+    __syscall1: (n, ...args) => call(instance, n, args),
+    __syscall2: (n, ...args) => call(instance, n, args),
+    __syscall3: (n, ...args) => call(instance, n, args),
+    __syscall4: (n, ...args) => call(instance, n, args),
+    __syscall5: (n, ...args) => call(instance, n, args),
+    __syscall6: (n, ...args) => call(instance, n, args),
     putc_js: c => {
       const s = String.fromCharCode(c);
       if (s === "\n") {

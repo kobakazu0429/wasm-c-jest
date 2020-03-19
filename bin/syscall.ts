@@ -68,25 +68,19 @@ export function syscall(instance: Instance, n: number, args: number[]): any {
   }
 }
 
-type Syscall0 = (n: number) => any;
-type Syscall1 = (n: number, a: number) => any;
-type Syscall2 = (n: number, a: number, b: number) => any;
-type Syscall3 = (n: number, a: number, b: number, c: number) => any;
-type Syscall4 = (n: number, a: number, b: number, c: number, d: number) => any;
-type Syscall5 = (
+type Repeat<Length extends number, T> = Length extends 0
+  ? []
+  : [T, ...T[]] & { length: Length };
+
+type SyscallN<N extends number> = (
   n: number,
-  a: number,
-  b: number,
-  c: number,
-  d: number,
-  e: number
+  ...args: Repeat<N, number>
 ) => any;
-type Syscall6 = (
-  n: number,
-  a: number,
-  b: number,
-  c: number,
-  d: number,
-  e: number,
-  f: number
-) => any;
+
+type Syscall0 = SyscallN<0>;
+type Syscall1 = SyscallN<1>;
+type Syscall2 = SyscallN<2>;
+type Syscall3 = SyscallN<3>;
+type Syscall4 = SyscallN<4>;
+type Syscall5 = SyscallN<5>;
+type Syscall6 = SyscallN<6>;
