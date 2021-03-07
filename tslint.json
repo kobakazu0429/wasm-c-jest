@@ -6,13 +6,15 @@
     "curly": [true, "ignore-same-line"],
     "no-empty": false,
     "no-console": false,
+    "no-bitwise": false,
     "no-unused-expression": [true, "allow-fast-null-checks"],
-    "variable-name": [
-      true,
-      "check-format",
-      "allow-pascal-case",
-      "allow-leading-underscore"
-    ],
+    // "variable-name": [
+    //   true,
+    //   "check-format",
+    //   "allow-pascal-case",
+    //   "allow-leading-underscore"
+    // ],
+    "variable-name": false,
     "interface-name": false,
     "object-literal-sort-keys": false,
     "ordered-imports": false,
